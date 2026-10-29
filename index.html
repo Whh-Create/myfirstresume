@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0c0c0c" />
+    <meta name="description" content="从合肥到兰州，记录欣然一路走来的二十个时刻。" />
+    <meta name="format-detection" content="telephone=no,email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <!-- 微信/朋友圈分享时的卡片信息；上线后把 og:url 和 og:image 换成你的真实地址 -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="欣然之家" />
+    <meta property="og:title" content="欣然之家 · 个人经历" />
+    <meta property="og:description" content="从合肥到兰州，记录欣然一路走来的二十个时刻。" />
+    <meta property="og:url" content="https://example.github.io/resume/" />
+    <meta property="og:image" content="https://example.github.io/resume/images/18.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>欣然之家 · 个人经历</title>
+    <link rel="preload" as="image" href="images/18.webp" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <canvas class="starfield" aria-hidden="true"></canvas>
+    <div class="reading-progress" aria-hidden="true"><span></span></div>
+
+    <header class="site-nav">
+      <a class="brand" href="#top" aria-label="欣然之家，回到首页">
+        <span class="brand-mark">欣</span>
+        <span class="brand-copy"><strong>欣然之家</strong><small>PERSONAL JOURNAL</small></span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="#about">关于</a>
+        <a href="#timeline">经历</a>
+      </nav>
+      <a class="nav-cta" href="#timeline">沿着时间往下走 <span aria-hidden="true">↘</span></a>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img class="hero-image" src="images/18.webp" alt="一家人自驾穿越雪山与湖泊" fetchpriority="high" />
+        <div class="hero-shade"></div>
+        <div class="hero-content page-width">
+          <p class="eyebrow"><span class="eyebrow-dot"></span> A PERSONAL JOURNEY <span class="eyebrow-rule"></span> 2005 —</p>
+          <h1 id="hero-title">欣然之家</h1>
+          <p class="hero-line">从合肥出发，慢慢成为自己。</p>
+          <p class="hero-quote">“听从内心，未来可期。”</p>
+          <a class="hero-link" href="#timeline"><span>开始这段旅程</span><span class="hero-link-arrow" aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-location"><span>31°52′ N</span><i></i><span>HEFEI → LANZHOU</span></div>
+        <div class="hero-index"><span>01</span><i></i><span>20</span></div>
+      </section>
+
+      <div class="marquee" aria-label="听从内心，终身学习，终身体育">
+        <div class="marquee-track" aria-hidden="true">
+          <span>听从内心</span><b>✳</b><span>终身学习</span><b>✳</b><span>终身体育</span><b>✳</b><span>跟过去的自己比</span><b>✳</b>
+          <span>听从内心</span><b>✳</b><span>终身学习</span><b>✳</b><span>终身体育</span><b>✳</b><span>跟过去的自己比</span><b>✳</b>
+        </div>
+      </div>
+
+      <section class="about-section page-width" id="about" aria-labelledby="about-title">
+        <div class="section-kicker"><span>01 / ABOUT</span><span>合肥 · 兰州 · 远方</span></div>
+        <div class="about-grid">
+          <div>
+            <h2 id="about-title">一路走来，<br /><em>每一步都算数。</em></h2>
+          </div>
+          <div class="about-copy">
+            <p>从合肥的童年，到兰州独自生活的日子；从认真读书，到重新认识自己。那些得意、遗憾、相遇与远行，慢慢拼成了今天的我。</p>
+            <p class="about-note">远离家乡，事事靠自己。保持独立与自律，也把终身学习、终身体育，留给更长的未来。</p>
+            <div class="principles" aria-label="一路坚持的事">
+              <span>独立</span><span>自律</span><span>终身学习</span><span>终身体育</span>
+            </div>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div><strong>20</strong><span>个成长片段</span></div>
+          <div><strong>02</strong><span>座熟悉的城市</span></div>
+          <div><strong>01</strong><span>句相信的话</span></div>
+          <p>“听从内心，未来可期。”</p>
+        </div>
+      </section>
+
+      <section class="timeline-section" id="timeline" aria-labelledby="timeline-title">
+        <div class="page-width">
+          <div class="section-kicker"><span>02 / THE STORY</span><span>2005 — NOW</span></div>
+          <div class="timeline-heading">
+            <div>
+              <p class="small-label">LIFE IN CHAPTERS</p>
+              <h2 id="timeline-title">成长的<span>二十个瞬间</span></h2>
+            </div>
+            <p class="timeline-intro">从第一次出发，到又一次启程。<br />这里收藏着一路上的风景和心情。</p>
+          </div>
+          <div class="timeline-layout">
+            <aside class="index-rail" aria-label="章节索引">
+              <p>CHAPTER INDEX</p>
+              <ol class="chapter-index"></ol>
+            </aside>
+            <div class="experience-list" aria-live="polite">
+              <p class="loading-state">正在打开这段经历……</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-section page-width" aria-labelledby="closing-title">
+        <div class="closing-image-wrap">
+          <img src="images/20.webp" alt="站在新城市与未来画卷前的少年" loading="lazy" />
+          <span class="image-caption">NEXT, A NEW PAGE</span>
+        </div>
+        <div class="closing-copy">
+          <p class="small-label">AND THE STORY CONTINUES</p>
+          <h2 id="closing-title">徐徐打开的<br /><em>新画卷。</em></h2>
+          <p>新的阶段正在开始。带着一路积累的勇气、好奇和认真，继续向前。</p>
+          <a href="#top" class="back-top">回到最初 <span aria-hidden="true">↑</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer page-width">
+      <a class="footer-brand" href="#top">欣然之家<span> / PERSONAL JOURNAL</span></a>
+      <span>一路向前，保持热爱。</span>
+      <span>2005 — ∞</span>
+    </footer>
+
+    <dialog class="story-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-shell">
+        <div class="dialog-topline"><span class="dialog-number"></span><button class="icon-button dialog-close" type="button" aria-label="关闭章节详情">×</button></div>
+        <div class="dialog-body">
+          <div class="dialog-image-wrap"><img class="dialog-image" src="" alt="" /></div>
+          <div class="dialog-copy">
+            <p class="small-label dialog-phase"></p>
+            <h2 id="dialog-title"></h2>
+            <p class="dialog-text"></p>
+            <div class="dialog-controls">
+              <button class="text-button dialog-prev" type="button"><span aria-hidden="true">←</span> 上一章</button>
+              <button class="text-button dialog-next" type="button">下一章 <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </dialog>
+  </body>
+</html>
