@@ -99,9 +99,23 @@ function parseExperiences(markdown) {
     const match = lines.shift().trim().match(/^(\d+)\s+(.+)$/);
     if (!match) return null;
     const number = Number(match[1]);
-    const body = lines.join('\n').replace(/^\r?\n/, '').replace(/\n+$/, '');
-    return { number, title: match[2], body, image: `images/${number}.webp`, phase: phaseFor(number), index };
+    const rest = lines.join('\n').replace(/^\r?\n/, '').replace(/\n+$/, '');
+    const detailStart = rest.search(/^###[ \t]/m);
+    const body = (detailStart === -1 ? rest : rest.slice(0, detailStart)).trim();
+    const detail = detailStart === -1
+      ? ''
+      : rest.slice(detailStart).replace(/^###[^\n]*\n?/, '').trim();
+    return { number, title: match[2], body, detail, image: `images/${number}.webp`, phase: phaseFor(number), index };
   }).filter(Boolean);
+}
+
+function renderParagraphs(text) {
+  return text
+    .split(/\n{2,}/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
+    .map((paragraph) => `<p>${escapeHTML(paragraph).replace(/\n/g, '<br />')}</p>`)
+    .join('');
 }
 
 function renderExperiences() {
@@ -134,31 +148,18 @@ function openChapter(number) {
   dialogNumber.textContent = `CHAPTER ${String(chapter.number).padStart(2, '0')} / ${String(chapters.length).padStart(2, '0')}`;
   dialogTitle.textContent = chapter.title;
   dialogPhase.textContent = chapter.phase.toUpperCase();
-  dialogText.textContent = chapter.body;
+  dialogText.innerHTML = renderParagraphs(chapter.detail || chapter.body);
+  dialogText.scrollTop = 0;
   dialogImage.src = chapter.image;
   dialogImage.alt = chapter.title;
   dialogPrev.disabled = activeChapter === 0;
   dialogNext.disabled = activeChapter === chapters.length - 1;
-  if (!storyDialog.open) {
-    // 老版本微信/WebView 没有 <dialog>.showModal，退化成普通浮层
-    if (typeof storyDialog.showModal === 'function') {
-      storyDialog.showModal();
-    } else {
-      storyDialog.setAttribute('open', '');
-      storyDialog.classList.add('is-fallback');
-      document.body.classList.add('fallback-dialog');
-    }
-  }
+  if (!storyDialog.open) storyDialog.showModal();
   document.body.classList.add('dialog-open');
 }
 
 function closeDialog() {
-  storyDialog.classList.remove('is-fallback');
-  document.body.classList.remove('fallback-dialog');
-  if (storyDialog.open) {
-    if (typeof storyDialog.close === 'function') storyDialog.close();
-    else storyDialog.removeAttribute('open');
-  }
+  if (storyDialog.open) storyDialog.close();
   document.body.classList.remove('dialog-open');
 }
 
@@ -208,7 +209,7 @@ function observeRows() {
 
 async function loadExperiences() {
   try {
-    const response = await fetch('experiences.md');
+    const response = await fetch(`experiences.md?v=${Date.now()}`, { cache: 'no-cache' });
     if (!response.ok) throw new Error(`Unable to load experiences.md (${response.status})`);
     chapters = parseExperiences(await response.text());
     if (chapters.length !== 20) throw new Error(`Expected 20 chapters, found ${chapters.length}`);
